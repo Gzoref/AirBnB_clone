@@ -14,14 +14,7 @@ The command intepreter is written in the console.py file. It has several methods
 * Destroy an object
 
 The CLI is linked to several other classes:
-* BaseModel
-* User
-* FileStorage
-* amenity
-* City 
-* State
-* Place
-* Review
+* BaseModel, User, FileStorage, amenity, City, State, Place, Review
 
 `BaseModel` is the parent class. It takes care of initiliazing, serializing and deserializing each instance.
 
@@ -83,32 +76,64 @@ Create command to create new instance
 
 (hnbn)
  ```
- To create a new instance, type `create` followed by a class name:
+ To create a new instance of a class, type `create` followed by a class name:
  ```
  (hnbn) create User
-7a5014f4-f195-4698-9ae6-9de930fc0a25
+2320c56a-574f-43bb-ab2d-d2cfce74ae47
  ```
- This returns a unique id, from the `UUID` import class. This unique number that is tagged to a instance. The `show` command displays a dictionary represntation of the object:
+
+ This returns a unique id from the `UUID` import class. This is a unique number that is tagged to an instance. The `show` command displays a string representation of an instance based on it's class name and user id:
  ```
- (hnbn) show User 7a5014f4-f195-4698-9ae6-9de930fc0a25
-[User] (7a5014f4-f195-4698-9ae6-9de930fc0a25) {'id': '7a5014f4-f195-4698-9ae6-9de930fc0a25', 'created_at': datetime.datetime(2020, 2, 18, 14, 34, 6, 879768), 'updated_at': datetime.datetime(2020, 2, 18, 14, 34, 6, 879782)}
+ (hnbn) show User 2320c56a-574f-43bb-ab2d-d2cfce74ae47
+[User] (2320c56a-574f-43bb-ab2d-d2cfce74ae47) {'id': '2320c56a-574f-43bb-ab2d-d2cfce74ae47', 'created_at': datetime.datetime(2020, 2, 19, 22, 25, 51, 185609), 'updated_at': datetime.datetime(2020, 2, 19, 22, 26, 25, 946631)}
  ```
- This saves a dictionary representation of the instance, which includes:
+
+ The `create` commands saves a dictionary representation of the instance, which includes:
 * Class name
 * Unique ID number
 * Created at (date/time)
 * Updated at (date/time)
 
-Further, the `destroy` method destroys the instance, so when we run it:
+The `update` command allows users to add additional attributes to the dictionary representation:
 ```
-(hnbn) destroy User 7a5014f4-f195-4698-9ae6-9de930fc0a25
+(hbnb) update User 2320c56a-574f-43bb-ab2d-d2cfce74ae47 first_name "Geoff"
 ```
+
+Using `show` again, we see that the `JSON` file now reads:
+```
+(hbnb) show User 2320c56a-574f-43bb-ab2d-d2cfce74ae47
+[User] (2320c56a-574f-43bb-ab2d-d2cfce74ae47) {'id': '2320c56a-574f-43bb-ab2d-d2cfce74ae47', 'created_at': datetime.datetime(2020, 2, 19, 22, 25, 51, 185609), 'updated_at': datetime.datetime(2020, 2, 19, 22, 26, 25, 946631), 'first_name': 'Geoff'}
+```
+
+Further, the `destroy` method deletes the instance, so when we run it:
+```
+(hnbn) destroy User 2320c56a-574f-43bb-ab2d-d2cfce74ae47
+```
+
 And try to `show` it again, we get this message:
 ```
 ** no instance found **
 ```
 The instance has been deleted.
 
+The `all` command prints a string representation of all instances, regardless of it's class.
+
+Finally, the `show`, `all`, `update` and `destroy` commands can also be called with the following syntax:
+```
+(hbnb) <class name>.command()
+``` 
+For example, `User.all()` is equivelent to the `all` command.
+
+Commands that require an `id` can be called like this:
+```
+(hbnb) User.show("246c227a-d5c1-403d-9bc7-6a47bb9f0f68")
+```
+
+
+In addition to the previoulsy mentioned commands, you can find the number of instances of a class using the `count` command in the above described format:
+```
+(hbnb) <class name>.count()
+```
 <br>
 <br>
 
