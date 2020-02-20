@@ -79,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
             print(new_instance.id)
         else:
-            print("** class doesn't exist")
+            print("** class doesn't exist **")
 
     def help_create(self):
         '''
@@ -100,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
             print('** class name missing **')
             return
         if class_name not in Class_Dict:
-            print("** Class doesn't exist **")
+            print("** class doesn't exist **")
             return
         if not class_id:
             print('** instance id missing **')
