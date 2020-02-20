@@ -30,6 +30,33 @@ The flow of the serialization and deserialization is:
 
 In file_storage.py we created a storage engine for the project. The methods for creating a new instance, saving and reloading it are in the `FileStorage` class.
 
+The following is a tree diagram of this projects folders and files:
+
+📦models\
+ ┣ 📂engine\
+ ┃ ┗ 📜[file_storage.py](models/engine/file_storage.py)\
+ ┣ 📜amenity.py\
+ ┣ 📜[base_model.py](models/base_model.py)\
+ ┣ 📜[city.py](models/city.py)\
+ ┣ 📜[place.py](models/place.py)\
+ ┣ 📜[review.py](models/review.py)\
+ ┣ 📜[state.py](models/state.py)\
+ ┗ 📜[user.py](models/user.py)
+
+ The Unit Tests are:
+
+📦tests\
+ ┣ 📂test_models\
+ ┃ ┣ 📂test_engine\
+ ┃ ┃ ┗📜[test_file_storage.py](tests/test_models/test_engine/test_file_storage.py)\
+ ┃ ┣ 📜[test_amenity.py](tests/test_models/test_amenity.py)\
+ ┃ ┣ 📜[test_base_model.py](tests/test_models/test_base_model.py)\
+ ┃ ┣ 📜[test_city.py](tests/test_models/test_city.py)\
+ ┃ ┣ 📜[test_place.py](tests/test_models/test_place.py)\
+ ┃ ┣ 📜[test_review.py](tests/test_models/test_review.py)\
+ ┃ ┣ 📜[test_state.py](tests/test_models/test_state.py)\
+ ┃ ┗ 📜[test_user.py](tests/test_models/test_user.py)
+
 ## Use
 Run the console:
 ```
